@@ -49,6 +49,8 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.0)
     equalizer (0.0.7)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
     guard (2.2.4)
@@ -143,9 +145,11 @@ PLATFORMS
 DEPENDENCIES
   celluloid
   coveralls
+  factory_girl
   guard-rspec
   httparty
   mail
+  pry
   rake
   rspec
   rspec-expectations

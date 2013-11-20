@@ -1,7 +1,9 @@
-ENV['RACK_ENV'] = "test"
-require "mechany"
-require "coveralls"
+ENV['RACK_ENV'] = 'test'
+require 'coveralls'
+require 'mail'
 Coveralls.wear!
+
+Dir[File.dirname(__FILE__) + '/../**/*.rb'].each { |file| require file }
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
