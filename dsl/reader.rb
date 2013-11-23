@@ -7,7 +7,7 @@ module Dsl
     include Virtus.model
 
     # File path that the reader will read.
-    attribute :file_path
+    attribute :file_path, String
 
     def value(key)
       file = YAML.load_file(file_path)
