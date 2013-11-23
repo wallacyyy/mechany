@@ -1,13 +1,20 @@
 require_relative '../spec_helper'
 
-describe Endpoint::Mail::Delivery do
+describe Endpoint::Mailing::Delivery do
 
-  let(:mail) { Mail.new }
+  let(:delivery) { Endpoint::Mailing::Delivery.new }
 
-  it 'sets the delivery method to the mail' do
-    delivery = Endpoint::Mail::Delivery.new
-    delivery.set_method(mail)
-    expect(mail.delivery_method.settings[:address]).to eql('localhost')
+  it 'sends an email with smtp' do
+    mail = double('mail')
+    expect(delivery).to receive(:mail).and_return(mail)
+    expect(mail).to receive(:delivery_method).with(:smtp, delivery.smtp.attributes)
+    expect(mail).to receive(:deliver)
+    delivery.with_smtp
+  end
+
+  it 'sends an email with an given delivery method' do
+    delivery.with_delivery_method(:test)
+    expect(Mail::TestMailer.deliveries.length).to eq(1)
   end
 
 end

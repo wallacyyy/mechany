@@ -4,7 +4,7 @@ module Dsl
     # Attributes that are allowed on the DSL language for the Smtp domain
     def allowed_attributes
       [ 'address', 'port', 'domain', 'domain', 'user_name', 
-        'password', 'authentication', 'enable_starttle_auto' ]
+        'password', 'authentication', 'enable_starttls_auto' ]
     end
   end
 end
