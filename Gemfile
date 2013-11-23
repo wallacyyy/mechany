@@ -12,7 +12,7 @@ gem 'pry'
 # test
 gem 'rspec'
 gem 'rspec-expectations'
-gem 'factory_girl'
+gem 'rspec-mocks'
 gem 'savon', github: 'savonrb/savon'
 gem 'guard-rspec', require: false
 gem 'coveralls', require: false

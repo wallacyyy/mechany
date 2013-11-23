@@ -1,5 +1,5 @@
 module Endpoint
-  module Mail
+  module Mailing
     require 'yaml'
     require_relative '../../dsl/reader'
     ##
@@ -8,7 +8,9 @@ module Endpoint
       include Virtus.model
       include Dsl::Smtp
 
-      # Options hash for the smtp server
+      ##
+      # Options hash for the smtp server. It's basically an
+      # an wrapper for the mail gem configs.
       attribute :address, String, default: 'localhost'
       attribute :port, Integer, default: 25
       attribute :domain, String
@@ -18,14 +20,17 @@ module Endpoint
       attribute :enable_starttls_auto, Boolean, default: true
 
       ##
-      # Fetch the configuration
-      def set_options
-      end
+      # Configuration file path.
+      attribute :config_path, String, default: 'config/mail.yml'
 
       ##
-      # Configuration file path.
-      def config_path
-        'config/mail.yml'
+      # Fetch the configuration from the configuration file.
+      def set_options
+        reader = Dsl::Reader.new(file_path: config_path)
+        allowed_attributes.each do |attr|
+          value = reader.value(attr)
+          send("#{attr}=", value)
+        end
       end
     end
   end
