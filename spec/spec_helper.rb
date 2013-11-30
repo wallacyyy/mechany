@@ -9,7 +9,7 @@ Dir[File.dirname(__FILE__) + '/../endpoints/**/*.rb'].each { |file| require file
 Dir[File.dirname(__FILE__) + '/../endpoints/*.rb'].each { |file| require file }
 
 VCR.configure do |vcr|
-  vcr.cassette_library_dir = File.dirname(__FILE__) + '/../cassettes'
+  vcr.cassette_library_dir = File.dirname(__FILE__) + '/cassettes'
   vcr.hook_into :webmock
 end
 
