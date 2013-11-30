@@ -7,12 +7,10 @@ describe Endpoint::Soap::Request do
   let(:client) { Endpoint::Soap::Client.new(wsdl: wsdl) }
 
   it 'sends an request and retrieves the result' do
-    VCR.use_cassette('us_zip_wsdl') do
-      savon_client = client.with_savon
-      VCR.use_cassette('us_zip_response') do
-        request = Endpoint::Soap::Request.new(file_path: path, client: savon_client)
-        expect(request.result.doc.search("//CITY").text).to eq("Beverly Hills")
-      end
+    savon_client = client.with_savon
+    VCR.use_cassette('us_zip_response') do
+      request = Endpoint::Soap::Request.new(file_path: path, client: savon_client)
+      expect(request.result.doc.search("//CITY").text).to eq("Beverly Hills")
     end
   end
 
