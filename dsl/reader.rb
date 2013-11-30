@@ -13,5 +13,10 @@ module Dsl
       file = YAML.load_file(file_path)
       file[key]
     end
+
+    def xml
+      file = File.read(file_path)
+      # Add remove line breaks here
+    end
   end
 end
