@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 gem 'sinatra', github: 'sinatra/sinatra'
 gem 'rake'
 gem 'celluloid'
-gem 'savon', github: 'savonrb/savon'
+gem 'savon', '~> 2.0'
 gem 'virtus'
 gem 'mail'
+gem 'nokogiri'
 gem 'httparty'
 gem 'pry'
 
@@ -13,6 +14,8 @@ gem 'pry'
 gem 'rspec'
 gem 'rspec-expectations'
 gem 'rspec-mocks'
-gem 'savon', github: 'savonrb/savon'
+
+gem 'vcr'
+gem 'webmock'
 gem 'guard-rspec', require: false
 gem 'coveralls', require: false

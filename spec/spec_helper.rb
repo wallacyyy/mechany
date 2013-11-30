@@ -1,11 +1,17 @@
 ENV['RACK_ENV'] = 'test'
 require 'coveralls'
 require 'mail'
+require 'vcr'
 Coveralls.wear!
 
 Dir[File.dirname(__FILE__) + '/../dsl/*.rb'].each { |file| require file }
 Dir[File.dirname(__FILE__) + '/../endpoints/**/*.rb'].each { |file| require file }
 Dir[File.dirname(__FILE__) + '/../endpoints/*.rb'].each { |file| require file }
+
+VCR.configure do |vcr|
+  vcr.cassette_library_dir = File.dirname(__FILE__) + '/../cassettes'
+  vcr.hook_into :webmock
+end
 
 RSpec.configure do |config|
   config.include Dsl::Smtp
