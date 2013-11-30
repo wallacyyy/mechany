@@ -1,15 +1,4 @@
 GIT
-  remote: git://github.com/savonrb/savon.git
-  revision: 40e878db42ffa5e20bc1c7c33781d6eea437143a
-  specs:
-    savon (3.0.0)
-      builder (>= 3.0.0)
-      httpclient (~> 2.3)
-      logging (~> 1.8)
-      nokogiri (>= 1.4.0)
-      nori (~> 2.2.0)
-
-GIT
   remote: git://github.com/sinatra/sinatra.git
   revision: 818c5e182618abfd92ce024931929bb4bfd334be
   specs:
@@ -27,6 +16,10 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
+    akami (1.2.0)
+      gyoku (>= 0.4.0)
+      nokogiri (>= 1.4.0)
     atomic (1.1.14)
     axiom-types (0.0.5)
       descendants_tracker (~> 0.0.1)
@@ -45,6 +38,8 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
     docile (1.1.0)
@@ -60,10 +55,13 @@ GEM
     guard-rspec (4.0.4)
       guard (>= 2.1.1)
       rspec (~> 2.14)
+    gyoku (1.0.0)
+      builder (>= 2.1.2)
     httparty (0.12.0)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    httpclient (2.3.4.1)
+    httpi (2.0.2)
+      rack
     i18n (0.6.5)
     ice_nine (0.10.0)
     json (1.8.1)
@@ -71,11 +69,7 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    little-plugger (1.1.3)
     lockfile (2.1.0)
-    logging (1.8.1)
-      little-plugger (>= 1.1.3)
-      multi_json (>= 1.3.6)
     lumberjack (1.0.4)
     mail (2.2.7)
       activesupport (>= 2.3.6)
@@ -89,7 +83,7 @@ GEM
     multi_xml (0.5.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    nori (2.2.0)
+    nori (2.1.0)
     polyglot (0.3.3)
     pry (0.9.12.3)
       coderay (~> 1.0)
@@ -112,6 +106,15 @@ GEM
     rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.4)
+    safe_yaml (0.9.7)
+    savon (2.2.0)
+      akami (~> 1.2.0)
+      builder (>= 2.1.2)
+      gyoku (~> 1.0.0)
+      httpi (~> 2.0.2)
+      nokogiri (>= 1.4.0)
+      nori (~> 2.1.0)
+      wasabi (~> 3.1.0)
     simplecov (0.8.1)
       docile (~> 1.1.0)
       lockfile (>= 2.1.0)
@@ -131,11 +134,18 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    vcr (2.7.0)
     virtus (1.0.0)
       axiom-types (~> 0.0.5)
       coercible (~> 0.2)
       descendants_tracker (~> 0.0.1)
       equalizer (~> 0.0.7)
+    wasabi (3.1.0)
+      httpi (~> 2.0)
+      nokogiri (>= 1.4.0)
+    webmock (1.15.2)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -146,11 +156,14 @@ DEPENDENCIES
   guard-rspec
   httparty
   mail
+  nokogiri
   pry
   rake
   rspec
   rspec-expectations
   rspec-mocks
-  savon!
+  savon (~> 2.0)
   sinatra!
+  vcr
   virtus
+  webmock
