@@ -8,7 +8,7 @@ module Endpoint
       attribute :wsdl, String
 
       def with_savon
-        Savon.client(wsdl: wsdl)
+        Savon.client(wsdl: wsdl, log: false)
       end
     end
   end
