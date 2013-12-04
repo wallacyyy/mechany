@@ -14,9 +14,10 @@ module Endpoint
 
       ##
       # Sends the request to an soap web service through the client.
-      def result
+      # Expects the operation name as symbol
+      def result(operation)
         xml = Dsl::Reader.new(file_path: file_path).xml
-        response = client.call(:get_info_by_zip, xml: xml)
+        response = client.call(operation, xml: xml)
       end
     end
   end

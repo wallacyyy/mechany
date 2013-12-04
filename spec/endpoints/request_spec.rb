@@ -8,6 +8,6 @@ describe Endpoint::Soap::Request do
     request = Endpoint::Soap::Request.new(client: client)
     expect(File).to receive(:read).and_return('random request')
     expect(client).to receive(:call)
-    request.result
+    request.result(:get_info_by_zip)
   end
 end

@@ -10,7 +10,7 @@ describe Endpoint::Soap::Request do
     savon_client = client.with_savon
     VCR.use_cassette('us_zip_response') do
       request = Endpoint::Soap::Request.new(file_path: path, client: savon_client)
-      expect(request.result.doc.search("//CITY").text).to eq("Beverly Hills")
+      expect(request.result(:get_info_by_zip).doc.search("//CITY").text).to eq("Beverly Hills")
     end
   end
 
