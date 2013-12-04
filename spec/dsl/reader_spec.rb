@@ -2,8 +2,8 @@ require_relative '../spec_helper'
 
 describe Dsl::Reader do
 
-  let(:config_sample) { File.dirname(__FILE__) + '/../fixtures/config_sample.yml' }
-  let(:xml) { File.dirname(__FILE__) + '/../fixtures/requests/us_zip_request.xml' }
+  let(:config_sample) { Dir.pwd + '/spec/fixtures/config_sample.yml' }
+  let(:xml) { Dir.pwd + '/spec/fixtures/requests/us_zip_request.xml' }
 
 
   it 'returns a value from an yml file given the key' do
