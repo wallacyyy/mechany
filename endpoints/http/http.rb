@@ -1,6 +1,5 @@
 module Endpoint
   require 'httparty'
-   
   ##
   # Handles generic http requests.
   class Http
