@@ -6,6 +6,7 @@ module Endpoint
     # Handles the requests to SOAP web services. 
     class Request
       include Virtus.model
+      include Celluloid
 
       # The path to file that contains a request.
       attribute :file_path, String
