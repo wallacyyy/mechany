@@ -6,6 +6,7 @@ module Endpoint
     # Sends mails through the smtp configuration given destiny address.
     class Delivery
       include Virtus.model
+      include Celluloid
 
       # Smtp configuration object.
       attribute :smtp, Endpoint::Mailing::Smtp, default: Endpoint::Mailing::Smtp.new
