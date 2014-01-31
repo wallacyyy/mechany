@@ -4,7 +4,6 @@ module Endpoint
 
     class Xslt 
       include Virtus.model
-      include Celluloid
 
       attribute :xml, String
       attribute :xsl_path, String 

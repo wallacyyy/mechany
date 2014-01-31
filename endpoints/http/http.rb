@@ -5,7 +5,6 @@ module Endpoint
   class Http
     include Virtus.model
     include HTTParty
-    include Celluloid
 
     # Url that the client will send the request.
     attribute :url, String
