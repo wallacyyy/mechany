@@ -12,8 +12,13 @@ module Dsl
     ##
     # Retrieves an value on the the yml root.
     def value(key)
-      file = YAML.load_file(file_path)
-      file[key]
+      nodes[key]
+    end
+
+    ##
+    # Retrieves all file keys
+    def nodes 
+      YAML.load_file(file_path)
     end
 
     ##
