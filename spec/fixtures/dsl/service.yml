@@ -1,0 +1,5 @@
+http:
+  url: 'http://httpbin.org/get'
+email:
+  from: 'mrjonhs@email.com'
+  to: 'mrbobs@email.com'
