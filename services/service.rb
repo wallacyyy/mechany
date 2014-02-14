@@ -9,5 +9,9 @@ module Mechany
     attribute :id, Integer
     attribute :endpoints, Array
 
+    def execute
+      nil
+    end
+
   end
 end
