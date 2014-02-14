@@ -6,7 +6,7 @@ module Dsl
     ##
     # Attributes that are allowed on the DSL language for the Http domain
     def allowed_attributes
-      [ 'url' ]
+      [ 'url', 'parameters' ]
     end
   end
 end
