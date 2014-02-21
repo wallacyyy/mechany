@@ -1,5 +1,8 @@
 http:
   url: 'http://httpbin.org/get'
+  response: $http
 email:
   from: 'mrjonhs@email.com'
   to: 'mrbobs@email.com'
+  subject: $http 
+  body: $http

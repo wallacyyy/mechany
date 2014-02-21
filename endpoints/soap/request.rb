@@ -17,7 +17,7 @@ module Endpoint
       # Expects the operation name as symbol
       def result(operation)
         xml = Dsl::Reader.new(file_path: file_path).xml
-        response = client.call(operation, xml: xml)
+        client.call(operation, xml: xml)
       end
     end
   end

@@ -11,11 +11,15 @@ module Dsl
     include Celluloid
 
     attribute :reader, Dsl::Reader
+    # Hash of variables that come from the endpoint responses 
+    attribute :variables, Hash, default: {}
+    # The last executed endpoint response
+    attribute :response
 
     def endpoints
-      { :mail => Endpoint::Mailing::Delivery,
-        :soap => Endpoint::Soap::Request,
-        :http => Endpoint::Http }
+      { 'mail' => Endpoint::Mailing::Delivery,
+        'soap' => Endpoint::Soap::Request,
+        'http' => Endpoint::Http }
     end
 
     ##
@@ -26,15 +30,17 @@ module Dsl
     # An group of services is called by an client, the service results is received
     # with an pipeline of async celluloid futures.
     # The services are async between them, but sync by itself.
-    def run
+    def start
       nodes = reader.nodes
-      response = nil
       nodes.each do |node|
         exclusive do
-          clazz = endpoints[node.to_sym]
-          endpoint = clazz.new(node)
-          result = endpoint.call(node, parameters, response)
-          response = result
+          key = node.first
+          clazz = endpoints[key]
+          if attr = nodes[key]['response']
+            nodes[key].delete('response')
+          end
+          endpoint = clazz.new(nodes[key])
+          variables[attr] = endpoint.call
           endpoint.terminate
         end
       end

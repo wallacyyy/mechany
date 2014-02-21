@@ -6,8 +6,9 @@ describe Dsl::Service do
   let(:reader) { Dsl::Reader.new(file_path: path) }
   let(:service) { Dsl::Service.new(reader: reader) }
   
-  it 'request an service and read his nodes' do
-    pending
+  it 'saves an response in a service variable' do
+    expect(Endpoint::Http).to receive(:new).with({'url' => 'http://httpbin.org/get'})
+    expect(service.variables['$http']).to be_kind_of(String)
   end
 
 end
