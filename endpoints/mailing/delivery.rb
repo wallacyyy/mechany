@@ -29,23 +29,23 @@ module Endpoint
       ##
       # Sets another delivery method to the mail
       def with_delivery_method(method)
-        mail = mail(from, to, subject, body)
-        mail.delivery_method(method.to_sym)
-        mail.deliver
+        built_mail = mail
+        built_mail.delivery_method(method.to_sym)
+        built_mail.deliver
       end 
 
       ##
       # Delivers the mail given the basic mailing params with
       # the mail configurations.
-      def mail(from, to, subject, body)
-        mail = Mail.new do
-          from    from
-          to      to
-          subject subject
-          body    body
-        end
+      def mail
+        mail = Mail.new(from: from, to: to, subject: subject, body: body)
+      end
+
+      ##
+      # Default method name convention to services
+      def call 
+        mail
       end
     end
-
   end
 end

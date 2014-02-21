@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 describe Endpoint::Mailing::Delivery do
 
-  let(:delivery) { Endpoint::Mailing::Delivery.new }
+  let(:delivery) { Endpoint::Mailing::Delivery.new(from: 'from', to: 'to', subject: 'subject', body: 'body') }
 
   it 'sends an email with smtp' do
     mail = double('mail')
