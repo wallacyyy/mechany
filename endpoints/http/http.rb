@@ -16,5 +16,11 @@ module Endpoint
       HTTParty.get(url)
     end
 
+    ##
+    # Default method name convention to services
+    def call 
+      get
+    end
+
   end
 end
