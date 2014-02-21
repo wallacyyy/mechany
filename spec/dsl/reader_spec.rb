@@ -17,4 +17,14 @@ describe Dsl::Reader do
     expect(reader.xml).to be_kind_of(String)
   end
 
+  it 'gets all nodes from th yml file' do
+    reader = Dsl::Reader.new(file_path: config_sample)
+    expect(reader.nodes).to be_kind_of(Hash)
+  end
+
+  it 'retrive an value from a node' do
+    reader = Dsl::Reader.new(file_path: config_sample)
+    expect(reader.nodes['node']).to eql({ 'property' => 'bob' }) 
+  end 
+    
 end

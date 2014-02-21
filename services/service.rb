@@ -1,7 +1,7 @@
 module Mechany
   ##
   # One service can get 1..* endpoints.   
-  # The service itself is an async operation, but the methods through the integration aren't.
+  # The service itself is an async operation, but the methods through the integration are sync.
   class Service
     include Virtus.model
     include Celluloid
