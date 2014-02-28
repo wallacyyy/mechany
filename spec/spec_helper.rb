@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 require 'coveralls'
 require 'mail'
 require 'vcr'
+require 'celluloid/autostart'
 Coveralls.wear!
 
 Dir[File.dirname(__FILE__) + '/../dsl/*.rb'].each { |file| require file }
