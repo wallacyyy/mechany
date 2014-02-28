@@ -16,6 +16,8 @@ module Dsl
     # The last executed endpoint response
     attribute :response
 
+    ##
+    # Endpoints to be fetched from start method
     def endpoints
       { 'mail' => Endpoint::Mailing::Delivery,
         'soap' => Endpoint::Soap::Request,
@@ -32,16 +34,19 @@ module Dsl
     # The services are async between them, but sync by itself.
     def start
       nodes = reader.nodes
-      nodes.each do |node|
+      nodes.each do |key, value|
         exclusive do
-          key = node.first
           clazz = endpoints[key]
           if attr = nodes[key]['response']
             nodes[key].delete('response')
           end
-          endpoint = clazz.new(nodes[key])
+          if nodes[key][0] == '$'
+            value = variables[nodes[key]] 
+          else
+            value = nodes[key]
+          end
+          endpoint = clazz.new(value)
           variables[attr] = endpoint.call
-          endpoint.terminate
         end
       end
     end
