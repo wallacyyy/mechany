@@ -23,6 +23,7 @@ describe Dsl::Service do
    expect(delivery).to receive(:call)
    service.start
    expect(service.variables['$http']).to eq('http_response')
+   service.terminate
   end
 
 end
