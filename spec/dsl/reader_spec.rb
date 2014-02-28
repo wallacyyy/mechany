@@ -24,7 +24,7 @@ describe Dsl::Reader do
 
   it 'retrive an value from a node' do
     reader = Dsl::Reader.new(file_path: config_sample)
-    expect(reader.nodes['node']).to eql({ 'property' => 'bob' }) 
+    expect(reader.nodes['node']).to eql({ 'property' => 'bob', 'another_property' => 'noel' }) 
   end 
     
 end
