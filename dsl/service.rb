@@ -35,19 +35,17 @@ module Dsl
     def start
       nodes = reader.nodes
       nodes.each do |key, value|
-        exclusive do
-          clazz = endpoints[key]
-          if attr = nodes[key]['response']
-            nodes[key].delete('response')
-          end
-          if nodes[key][0] == '$'
-            value = variables[nodes[key]] 
-          else
-            value = nodes[key]
-          end
-          endpoint = clazz.new(value)
-          variables[attr] = endpoint.call
+        clazz = endpoints[key]
+        if attr = nodes[key]['response']
+          nodes[key].delete('response')
         end
+        if nodes[key][0] == '$'
+          value = variables[nodes[key]] 
+        else
+          value = nodes[key]
+        end
+        endpoint = clazz.new(value)
+        variables[attr] = endpoint.call
       end
     end
 
