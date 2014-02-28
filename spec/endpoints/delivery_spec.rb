@@ -12,8 +12,8 @@ describe Endpoint::Mailing::Delivery do
     delivery.with_smtp
   end
 
-  it 'sends an email with an given delivery method' do
-    delivery.with_delivery_method(:test)
+  it 'sends an email with an test delivery method' do
+    delivery.with_test
     expect(Mail::TestMailer.deliveries.length).to eq(1)
   end
 
