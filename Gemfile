@@ -19,3 +19,4 @@ gem 'vcr'
 gem 'webmock'
 gem 'guard-rspec', require: false
 gem 'coveralls', require: false
+gem "rb-readline", "~> 0.5.0"
