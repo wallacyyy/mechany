@@ -39,12 +39,13 @@ module Dsl
         if attr = nodes[key]['response']
           nodes[key].delete('response')
         end
-        if nodes[key][0] == '$'
-          value = variables[nodes[key]] 
-        else
-          value = nodes[key]
+
+        params = nodes[key]
+        params.each do |key, value| 
+          value[0] == '$' ? var = variables[value] : var = value
+          params[key] = var
         end
-        endpoint = clazz.new(value)
+        endpoint = clazz.new(params)
         variables[attr] = endpoint.call
       end
     end
