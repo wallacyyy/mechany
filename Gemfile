@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', github: 'sinatra/sinatra'
 gem 'rake'
 gem 'celluloid'
 gem 'savon', '~> 2.0'
