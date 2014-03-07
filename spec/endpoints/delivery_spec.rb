@@ -4,6 +4,10 @@ describe Endpoint::Mailing::Delivery do
 
   let(:delivery) { Endpoint::Mailing::Delivery.new(from: 'from', to: 'to', subject: 'subject', body: 'body') }
 
+  before(:each) do
+    Mail::TestMailer.deliveries.clear
+  end
+
   it 'sends an email with smtp' do
     mail = double('mail')
     expect(delivery).to receive(:mail).and_return(mail)
