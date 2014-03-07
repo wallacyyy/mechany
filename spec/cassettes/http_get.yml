@@ -17,11 +17,11 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 01 Dec 2013 15:13:33 GMT
+      - Fri, 07 Mar 2014 20:06:31 GMT
       Server:
       - gunicorn/0.17.4
       Content-Length:
-      - '152'
+      - '215'
       Connection:
       - keep-alive
     body:
@@ -29,13 +29,14 @@ http_interactions:
       string: |-
         {
           "headers": {
-            "Connection": "close",
-            "Host": "httpbin.org"
+            "Host": "httpbin.org",
+            "X-Request-Id": "3d630996-7b13-4e46-a966-76c89549b558",
+            "Connection": "close"
           },
-          "url": "http://httpbin.org/get",
           "args": {},
-          "origin": "189.4.239.13"
+          "url": "http://httpbin.org/get",
+          "origin": "179.210.222.223"
         }
     http_version: 
-  recorded_at: Sun, 01 Dec 2013 15:13:33 GMT
+  recorded_at: Fri, 07 Mar 2014 20:06:31 GMT
 recorded_with: VCR 2.7.0
