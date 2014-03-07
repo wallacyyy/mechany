@@ -17,13 +17,19 @@ describe Dsl::Service do
   end
   
   it 'saves an response in a service variable' do
-   expect(Endpoint::Http).to receive(:new).with({'url' => url}).and_return(http)
-   expect(http).to receive(:call).and_return('http_response')
-   expect(Endpoint::Mailing::Delivery).to receive(:new).with(mail).and_return(delivery)
-   expect(delivery).to receive(:call)
-   service.start
-   expect(service.variables['$http']).to eq('http_response')
-   service.terminate
+    params =  { 'from'    => 'mrjonhs@email.com',
+                'to'      => 'mrbobs@email.com',
+                'subject' => 'http_response',
+                'body'    => 'http_response',
+                'method'  => 'test' }
+
+    expect(Endpoint::Http).to receive(:new).with({'url' => url}).and_return(http)
+    expect(http).to receive(:call).and_return('http_response')
+    expect(Endpoint::Mailing::Delivery).to receive(:new).with(params).and_return(delivery)
+    expect(delivery).to receive(:call)
+    service.start
+    expect(service.variables['$http']).to eq('http_response')
+    service.terminate
   end
 
 end
