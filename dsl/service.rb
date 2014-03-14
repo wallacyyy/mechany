@@ -40,7 +40,6 @@ module Dsl
         if attr = nodes[key]['response']
           nodes[key].delete('response')
         end
-
         params = nodes[key]
         params.each do |key, value| 
           value[0] == '$' ? var = variables[value] : var = value

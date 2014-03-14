@@ -1,0 +1,14 @@
+- soap:
+    file_path: '/spec/fixtures/requests/us_zip_request.xml'
+    wsdl: 'http://www.webservicex.net/uszip.asmx?WSDL'
+    operation: 'get_info_by_zip'
+    response: $us_zip_response
+- xslt:
+    xml: $us_zip_response
+    xsl_path: '/spec/fixtures/xslt/zip_to_city.xml'
+    response: $transformed
+- soap:
+    xml: $transformed
+    wsdl: 'http://www.webservicex.net/uszip.asmx?WSDL'
+    operation: 'get_info_by_city'
+    response: $result

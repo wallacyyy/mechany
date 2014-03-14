@@ -7,8 +7,8 @@ describe Endpoint::Soap::Request do
 
   it 'sends an request and retrieves the result' do
     VCR.use_cassette('us_zip_response') do
-      request = Endpoint::Soap::Request.new(file_path: path, wsdl: wsdl )
-      expect(request.result(:get_info_by_zip).doc.search("//CITY").text).to eq("Beverly Hills")
+      request = Endpoint::Soap::Request.new(file_path: path, wsdl: wsdl, operation: 'get_info_by_zip')
+      expect(request.result.doc.search("//CITY").text).to eq("Beverly Hills")
     end
   end
 
