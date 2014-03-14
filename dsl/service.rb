@@ -21,6 +21,7 @@ module Dsl
     def endpoints
       { 'mail' => Endpoint::Mailing::Delivery,
         'soap' => Endpoint::Soap::Request,
+        'xslt' => Endpoint::Utils::Xslt,
         'http' => Endpoint::Http }
     end
 
