@@ -9,7 +9,7 @@ describe Endpoint::Http do
       http = Endpoint::Http.new(url: url)
       response = http.get
       expect(response['url']).to eq(url)
-      expect(response['origin']).to eq('189.4.239.13')
+      expect(response['origin']).to eq('179.210.222.223')
     end
   end
 

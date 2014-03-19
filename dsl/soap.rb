@@ -5,12 +5,9 @@ module Dsl
 
     ##
     # Attributes that are allowed on the DSL language for the Soap domain
-    # Example: 
-    # url: http://google.com/thisisansoapwebservice.wsdl
-    # request: googlewebservicerequest.xml
     # The path of the file will be retrieved from /integrations/soap/requests/
     def allowed_attributes
-      [ 'url', 'request' ] 
+      [ 'wsdl', 'file_path', 'file_path', 'xml' ] 
     end
   end
 end

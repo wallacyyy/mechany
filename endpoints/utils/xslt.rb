@@ -16,6 +16,10 @@ module Endpoint
         xslt.transform(doc)
       end
 
+      def call
+        transform.to_s
+      end
+
     end
   end
 end

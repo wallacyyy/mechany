@@ -12,7 +12,7 @@ module Endpoint
 
       ## 
       # Returns an savon client with the given wsdl url.
-      def with_savon
+      def instance
         Savon.client(wsdl: wsdl, log: false)
       end
     end
