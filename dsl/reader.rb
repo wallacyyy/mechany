@@ -12,20 +12,20 @@ module Dsl
     ##
     # Retrieves an value on the the yml root.
     def value(key)
-      nodes[key]
+      node = nodes.find {|p| p[key]}
+      node[key] if node
     end
 
     ##
     # Retrieves all file keys
     def nodes 
-      YAML.load_file(file_path)
+      YAML.load_file(Dir.pwd + file_path)
     end
 
     ##
     # Read an xml file. Right now this method are reading any file type.
     def xml
-      file = File.read(file_path)
-      # Add remove line breaks here
+      file = File.read(Dir.pwd + file_path)
     end
   end
 end

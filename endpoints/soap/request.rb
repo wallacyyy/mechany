@@ -26,7 +26,7 @@ module Endpoint
       end
 
       def call
-        result
+        result.http.raw_body
       end
     end
   end

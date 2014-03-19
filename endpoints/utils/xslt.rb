@@ -17,7 +17,7 @@ module Endpoint
       end
 
       def call
-        transform
+        transform.to_s
       end
 
     end

@@ -2,7 +2,7 @@ require_relative '../../spec_helper'
 
 describe Endpoint::Soap::Request do
 
-  let(:path) { Dir.pwd + '/spec/fixtures/requests/us_zip_request.xml' }
+  let(:path) { '/spec/fixtures/requests/us_zip_request.xml' }
   let(:wsdl) { 'http://www.webservicex.net/uszip.asmx?WSDL' }
 
   it 'sends an request and retrieves the result' do

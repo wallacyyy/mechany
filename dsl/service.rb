@@ -35,17 +35,15 @@ module Dsl
     # The services are async between them, but sync by itself.
     def start
       nodes = reader.nodes
-      nodes.each do |key, value|
-        clazz = endpoints[key]
-        if attr = nodes[key]['response']
-          nodes[key].delete('response')
+      nodes.each do |node|
+        params = node.values.first
+        params.delete('response') if (attr = params['response'])
+        name = node.keys.first
+        params.each do |key, value|
+          node[name][key] = variables[value] if (value[0] == '$')
         end
-        params = nodes[key]
-        params.each do |key, value| 
-          value[0] == '$' ? var = variables[value] : var = value
-          params[key] = var
-        end
-        endpoint = clazz.new(params)
+        clazz = endpoints[name]
+        endpoint = clazz.new(node[name])
         variables[attr] = endpoint.call
       end
     end

@@ -2,8 +2,8 @@ require_relative '../spec_helper'
 
 describe Dsl::Reader do
 
-  let(:config_sample) { Dir.pwd + '/spec/fixtures/config_sample.yml' }
-  let(:xml) { Dir.pwd + '/spec/fixtures/requests/us_zip_request.xml' }
+  let(:config_sample) { '/spec/fixtures/config_sample.yml' }
+  let(:xml) { '/spec/fixtures/requests/us_zip_request.xml' }
 
 
   it 'returns a value from an yml file given the key' do
@@ -19,12 +19,13 @@ describe Dsl::Reader do
 
   it 'gets all nodes from th yml file' do
     reader = Dsl::Reader.new(file_path: config_sample)
-    expect(reader.nodes).to be_kind_of(Hash)
+    expect(reader.nodes).to be_kind_of(Array)
+    expect(reader.nodes.first).to be_kind_of(Hash)
   end
 
   it 'retrive an value from a node' do
     reader = Dsl::Reader.new(file_path: config_sample)
-    expect(reader.nodes['node']).to eql({ 'property' => 'bob', 'another_property' => 'noel' }) 
+    expect(reader.value('node')).to eql({ 'property' => 'bob', 'another_property' => 'noel' }) 
   end 
     
 end

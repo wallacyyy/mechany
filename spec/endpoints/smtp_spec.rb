@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 describe Endpoint::Mailing::Smtp do
 
-  let(:path) { Dir.pwd + '/spec/fixtures/config_sample.yml' }
+  let(:path) { '/spec/fixtures/config_sample.yml' }
   let(:smtp) { Endpoint::Mailing::Smtp.new(config_path: path) }
 
   it 'returns the config path' do

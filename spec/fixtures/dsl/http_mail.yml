@@ -1,9 +1,9 @@
-http:
-  url: 'http://httpbin.org/ip'
-  response: $http
-mail:
-  from: 'mrjonhs@email.com'
-  to: 'mrbobs@email.com'
-  subject: $http
-  body: 'yup'
-  method: test
+- http:
+    url: 'http://httpbin.org/ip'
+    response: $http
+- mail:
+    from: 'mrjonhs@email.com'
+    to: 'mrbobs@email.com'
+    subject: $http
+    body: 'yup'
+    method: test
