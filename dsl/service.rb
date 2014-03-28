@@ -31,7 +31,7 @@ module Dsl
     # the response of one to the default receiver field of the next endpoint.
     # Each node is locked on exclusive mode until finish.
     # An group of services is called by an client, the service results is received
-    # with an pipeline of async celluloid futures.
+    # with an pipeline of celluloid futures called by service group class.
     # The services are async between them, but sync by itself.
     def start
       nodes = reader.nodes
