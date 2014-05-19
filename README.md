@@ -1,4 +1,4 @@
-[![Mechany](http://i.imgur.com/z9Nn34U.png)](http://i.imgur.com/z9Nn34U.png)
+# Mechany
 
 [![Code Climate](https://codeclimate.com/github/wallacyyy/mechany.png)](https://codeclimate.com/github/wallacyyy/mechany)
 [![Build Status](https://travis-ci.org/wallacyyy/mechany.png)](https://travis-ci.org/wallacyyy/mechany)
