@@ -4,4 +4,4 @@
 [![Build Status](https://travis-ci.org/wallacyyy/mechany.png)](https://travis-ci.org/wallacyyy/mechany)
 [![Coverage Status](https://coveralls.io/repos/wallacyyy/mechany/badge.png)](https://coveralls.io/r/wallacyyy/mechany)
 
-An simple Ruby ESB ready to go.
+A simple Ruby service bus ready to go.
