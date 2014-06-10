@@ -8,6 +8,7 @@ gem 'mail'
 gem 'nokogiri'
 gem 'httparty'
 gem 'pry'
+gem 'commander'
 
 # test
 gem 'rspec'

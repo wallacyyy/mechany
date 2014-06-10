@@ -12,9 +12,7 @@ module Service
       Dir.glob(path + "/*.yml").each do |path|
         self.supervisor = clazz.supervise(reader: Dsl::Reader.new(file_path: path))
       end
-      supervisor.actors.each do |actor|
-        actor.start
-      end
+      supervisor.actors.each { |actor| actor.start }
     end
 
   end
