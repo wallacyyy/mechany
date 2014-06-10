@@ -1,5 +1,5 @@
 module Service
-  require_relative '../dsl/service'
+  require './dsl/service'
 
   class Group
     include Virtus.model

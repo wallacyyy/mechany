@@ -1,4 +1,4 @@
-require_relative '../spec_helper'
+require './spec/spec_helper'
 
 describe Endpoint::Http do
 

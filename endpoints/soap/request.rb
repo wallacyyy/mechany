@@ -1,8 +1,8 @@
 module Endpoint
   module Soap
     require 'savon'
-    require_relative '../../dsl/reader'
-    require_relative 'client'
+    require './dsl/reader'
+    require './endpoints/soap/client'
     ##
     # Handles the requests to SOAP web services. 
     class Request

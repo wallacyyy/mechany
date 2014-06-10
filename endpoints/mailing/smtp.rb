@@ -1,8 +1,8 @@
 module Endpoint
   module Mailing
     require 'yaml'
-    require_relative '../../dsl/reader'
-    require_relative '../../dsl/smtp'
+    require './dsl/reader'
+    require './dsl/smtp'
     ##
     # Provides the smtp server configuration.
     class Smtp

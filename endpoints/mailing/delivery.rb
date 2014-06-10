@@ -1,6 +1,6 @@
 module Endpoint
   module Mailing
-    require_relative 'smtp'
+    require './endpoints/mailing/smtp'
     require 'mail'
     ##
     # Sends mails through the smtp configuration given destiny address.

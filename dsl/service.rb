@@ -1,8 +1,8 @@
 module Dsl
-  require_relative '../endpoints/mailing/delivery'
-  require_relative '../endpoints/soap/request'
-  require_relative '../endpoints/http/http'
-  require_relative '../dsl/reader'
+  require './endpoints/mailing/delivery'
+  require './endpoints/soap/request'
+  require './endpoints/http/http'
+  require './dsl/reader'
 
   ##
   # Reads dsl files and delegates the params to services. 
