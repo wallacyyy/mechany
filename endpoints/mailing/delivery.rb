@@ -2,48 +2,35 @@ module Endpoint
   module Mailing
     require './endpoints/mailing/smtp'
     require 'mail'
-    ##
-    # Sends mails through the smtp configuration given destiny address.
+
     class Delivery
-      include Virtus.model
+      attr_accessor :smtp, :from, :to, :subject, :body
 
-      # Smtp configuration object.
-      attribute :smtp, Endpoint::Mailing::Smtp, default: Endpoint::Mailing::Smtp.new
+      def initialize(options = {})
+        @smtp = options[:smtp] || Endpoint::Mailing::Smtp.new
+        @from = options[:from]
+        @subject = options[:subject]
+        @to = options[:to]
+        @body = options[:body]
+        @method = options[:method]
+      end
 
-      # Mail content
-      attribute :from, String
-      attribute :to, String
-      attribute :subject, String
-      attribute :body, String
-      attribute :method
-
-      ##
-      # Deliver mail with test method
       def with_test
         email = mail
         email.delivery_method(:test)
         email.deliver
       end
 
-      ##
-      # Apply the defined delivery method to the mail to be sent.
-      # Why apply the delivery method here and not on some app initializer?
-      # Because downtime on integration is not cool. 
       def with_smtp
         email = mail
-        email.delivery_method(:smtp, smtp.attributes)
+        email.delivery_method(:smtp, @smtp.as_hash)
         email.deliver
       end
 
-      ##
-      # Delivers the mail given the basic mailing params with
-      # the mail configurations.
       def mail
-        Mail.new(from: from, to: to, subject: subject, body: body)
+        Mail.new(from: @from, to: @to, subject: @subject, body: @body)
       end
 
-      ##
-      # Default method name convention to services
       def call 
         send("with_#{method.to_s}")
       end

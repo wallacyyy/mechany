@@ -12,7 +12,7 @@ describe Dsl::Service do
   end
 
  it "makes a soap request, apply a xslt transformation and access another soap endpoint" do
-   service = Dsl::Service.new(reader: Dsl::Reader.new(file_path: soap_xslt_soap))
+   service = Dsl::Service.new(Dsl::Reader.new(soap_xslt_soap))
    VCR.use_cassette('soap_xslt_soap') do
      service.start
    end

@@ -2,18 +2,18 @@ module Service
   require './dsl/service'
 
   class Group
-    include Virtus.model
+    attr_accessor :supervisor, :path, :clazz
 
-    attribute :path, String, default: Dir.pwd + "/services" 
-    attribute :clazz, Object, default: Dsl::Service
-    attribute :supervisor
+    def initialize(options = {})
+      @path = options[:path] || Dir.pwd + '/services'
+      @clazz = options[:clazz] || Dsl::Service
+    end
 
     def init 
       Dir.glob(path + "/*.yml").each do |path|
-        self.supervisor = clazz.supervise(reader: Dsl::Reader.new(file_path: path))
+        self.supervisor = clazz.supervise(reader: Dsl::Reader.new(path))
       end
       supervisor.actors.each { |actor| actor.start }
     end
-
   end
 end

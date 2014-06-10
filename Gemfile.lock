@@ -12,10 +12,6 @@ GEM
       gyoku (>= 0.4.0)
       nokogiri (>= 1.4.0)
     atomic (1.1.14)
-    axiom-types (0.0.5)
-      descendants_tracker (~> 0.0.1)
-      ice_nine (~> 0.9)
-    backports (3.3.5)
     builder (3.2.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -23,9 +19,6 @@ GEM
       celluloid (>= 0.15.0)
       nio4r (>= 0.5.0)
     coderay (1.1.0)
-    coercible (0.2.0)
-      backports (~> 3.0, >= 3.1.0)
-      descendants_tracker (~> 0.0.1)
     commander (4.1.6)
       highline (~> 1.6.11)
     coveralls (0.7.0)
@@ -36,10 +29,8 @@ GEM
       thor
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
-    descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
     docile (1.1.0)
-    equalizer (0.0.7)
     ffi (1.9.3)
     formatador (0.2.4)
     guard (2.5.1)
@@ -60,7 +51,6 @@ GEM
     httpi (2.0.2)
       rack
     i18n (0.6.5)
-    ice_nine (0.10.0)
     json (1.8.1)
     listen (2.7.0)
       celluloid (>= 0.15.2)
@@ -132,11 +122,6 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
     vcr (2.7.0)
-    virtus (1.0.0)
-      axiom-types (~> 0.0.5)
-      coercible (~> 0.2)
-      descendants_tracker (~> 0.0.1)
-      equalizer (~> 0.0.7)
     wasabi (3.1.0)
       httpi (~> 2.0)
       nokogiri (>= 1.4.0)
@@ -163,5 +148,4 @@ DEPENDENCIES
   rspec-mocks
   savon (~> 2.0)
   vcr
-  virtus
   webmock

@@ -3,25 +3,20 @@ module Endpoint
     require 'savon'
     require './dsl/reader'
     require './endpoints/soap/client'
-    ##
-    # Handles the requests to SOAP web services. 
+
     class Request
-      include Virtus.model
+      attr_accessor :xml, :file_path, :wsdl, :operation
 
-      attribute :xml, String
-      # The path to file that contains a request.
-      attribute :file_path, String
-      # Client that will be called to send the request.
-      attribute :wsdl
-      # Operation that will be called on request.
-      attribute :operation
-
-      ##
-      # Sends the request to an soap web service through the client.
-      # Expects the operation name as symbol
+      def initialize(options = {})
+        @file_path = options[:file_path]
+        @xml = options[:xml]
+        @wsdl = options[:wsdl]
+        @operation = options[:operation]
+      end
+     
       def result
-        payload = xml || Dsl::Reader.new(file_path: file_path).xml
-        client = Endpoint::Soap::Client.new(wsdl: wsdl).instance
+        payload = xml || Dsl::Reader.new(file_path).xml
+        client = Endpoint::Soap::Client.new(wsdl).instance
         client.call(operation.to_sym, xml: payload)
       end
 

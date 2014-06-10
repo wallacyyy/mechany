@@ -1,17 +1,18 @@
 module Endpoint
   module Utils
     require 'nokogiri'
-
     class Xslt 
-      include Virtus.model
+      attr_accessor :xml, :xsl_path
 
-      attribute :xml, String
-      attribute :xsl_path, String 
+      def initialize(options = {})
+        @xml = options[:xml]
+        @xsl_path = options[:xsl_path]
+      end
 
       def transform 
-        reader = Dsl::Reader.new(file_path: xsl_path)
+        reader = Dsl::Reader.new(@xsl_path)
         xsl = reader.xml
-        doc = Nokogiri::XML(xml)
+        doc = Nokogiri::XML(@xml)
         xslt = Nokogiri::XSLT(xsl)
         xslt.transform(doc)
       end
@@ -19,7 +20,6 @@ module Endpoint
       def call
         transform.to_s
       end
-
     end
   end
 end
