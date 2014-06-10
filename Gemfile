@@ -3,11 +3,11 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'celluloid'
 gem 'savon', '~> 2.0'
-gem 'virtus'
 gem 'mail'
 gem 'nokogiri'
 gem 'httparty'
 gem 'pry'
+gem 'commander'
 
 # test
 gem 'rspec'

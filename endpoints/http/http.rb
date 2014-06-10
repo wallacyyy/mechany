@@ -1,24 +1,25 @@
 module Endpoint
   require 'httparty'
-  ##
-  # Handles generic http requests.
+
   class Http
-    include Virtus.model
     include HTTParty
 
-    # Url that the client will send the request.
-    attribute :url, String
+    attr_accessor :url
 
-    ##
-    # Sends an basic GET request.
-    def get
-      HTTParty.get(url)
+    def initialize(options = {})
+      @url = options[:url]
     end
 
-    ##
-    # Default method name convention to services
+    def get
+      HTTParty.get(@url)
+    end
+
     def call 
       get
+    end
+
+    def allowed_attributes
+      [:url] 
     end
 
   end
