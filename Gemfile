@@ -11,8 +11,6 @@ gem 'commander'
 
 # test
 gem 'rspec'
-gem 'rspec-expectations'
-gem 'rspec-mocks'
 
 gem 'vcr'
 gem 'webmock'
