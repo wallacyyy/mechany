@@ -1,10 +1,10 @@
 require './spec/spec_helper'
+include Mechany
 
 describe Dsl::Reader do
 
   let(:config_sample) { '/spec/fixtures/config_sample.yml' }
   let(:xml) { '/spec/fixtures/requests/us_zip_request.xml' }
-
 
   it 'returns a value from an yml file given the key' do
     reader = Dsl::Reader.new(config_sample)
